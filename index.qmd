@@ -1,6 +1,6 @@
 ---
 title: "Homework 3: Fizzbuzz"
-author: "Your Name"
+author: "Jing Wang"
 output: html_document
 ---
 
@@ -22,36 +22,36 @@ Start by filling in the following table for the numbers 1:30 manually, to get a 
 
 | Input | Output |
 |-------|--------|
-| 1     |        |
-| 2     |        |
-| 3     |        |
-| 4     |        |
-| 5     |        |
-| 6     |        |
-| 7     |        |
-| 8     |        |
-| 9     |        |
-| 10    |        |
-| 11    |        |
-| 12    |        |
-| 13    |        |
-| 14    |        |
-| 15    |        |
-| 16    |        |
-| 17    |        |
-| 18    |        |
-| 19    |        |
-| 20    |        |
-| 21    |        |
-| 22    |        |
-| 23    |        |
-| 24    |        |
-| 25    |        |
-| 26    |        |
-| 27    |        |
-| 28    |        |
-| 29    |        |
-| 30    |        |
+| 1     |  1     |
+| 2     |  2     |
+| 3     |  Fizz  |
+| 4     |  4     |
+| 5     |  Buzz  |
+| 6     |  Fizz  |
+| 7     |  7     |
+| 8     |  8     |
+| 9     |  Fizz  |
+| 10    |  Buzz  |
+| 11    |  11    |
+| 12    |  Fizz  |
+| 13    |  13    |
+| 14    |  14    |
+| 15    |FizzBuzz|
+| 16    |  16    |
+| 17    |  17    |
+| 18    |  Fizz  |
+| 19    |  19    |
+| 20    |  Buzz  |
+| 21    |  Fizz  |
+| 22    |  22    |
+| 23    |  23    |
+| 24    |  Fizz  |
+| 25    |  Buzz  |
+| 26    |  26    |
+| 27    |  Fizz  |
+| 28    |  28    |
+| 29    |  29    |
+| 30    |FizzBuzz|
 
 : Fizzbuzz for 1:30
 
@@ -62,41 +62,84 @@ On paper or using a tool such as [excalidraw.com](excalidraw.com), create a prog
 In the chunk below, write code which will solve this problem for a single value `x`. You should be able to change the value of x at the top of the chunk and still get the correct answer.
 
 ```{r solo-fizzbuzz-r, echo = T}
-x <- 3
+x <- 5
 
 # FizzBuzz code goes here
+if (x %% 3 == 0 && x %% 5 == 0) {
+  print(paste("x = FizzBuzz"))
+} else if (x %% 3 == 0) {
+  print(paste("x = Fizz"))
+} else if (x %% 5 == 0) {
+  print(paste("x =Buzz"))
+} else {
+  print(paste("x =", x ))
+}
+
+
 
 ```
 
 
 ```{python solo-fizzbuzz-py, echo = T}
-x = 3
+x = 15
 
 # FizzBuzz code goes here
+if x % 3 == 0 and x % 5 == 0:
+    print("x = FizzBuzz ")
+elif x % 3 == 0:
+    print(" x = Fizz ")
+elif x % 5 == 0:
+    print("x = Buzz ")
+else:
+    print("x = ", x)
 
 ```
 
 Modify the code above so that the result is stored in a value `y`.
 
 ```{r solo-fizzbuzz-stored-r, echo = T}
-x <- 3
+x <- 20
 y <- NA
 # FizzBuzz code goes here
+if (x %% 3 == 0 && x %% 5 == 0) {
+    y <- "FizzBuzz"
+    print(paste("For x = ", x, " my code produces ", y, sep = ""))
+} else if (x %% 3 == 0) {
+    y <- "Fizz"
+    print(paste("For x = ", x, " my code produces ", y, sep = ""))
+} else if (x %% 5 == 0) {
+    y <- "Buzz"
+    print(paste("For x = ", x, " my code produces ", y, sep = ""))
+} else {
+    y <- x
+    print(paste("For x = ", x, " my code produces ", y, sep = ""))
+}
 
 
 
-print(paste("For x = ", x, " my code produces ", y, sep = ""))
 ```
 
 ```{python solo-fizzbuzz-stored-py, echo = T}
 import numpy as np
-x = 3
+x = 15
 y = np.nan
 # FizzBuzz code goes here
+if x % 3 == 0 and x % 5 == 0:
+    y = "FizzBuzz"
+    print("For x = "+ str(x)+ " my code produces "+ str(y))
+elif x % 3 == 0:
+    y = "Fizz"
+    print("For x = "+ str(x)+ " my code produces "+ str(y))
+elif x % 5 == 0:
+    y = "Buzz"
+    print("For x = "+ str(x)+ " my code produces "+ str(y))
+else:
+    y = x
+    print("For x = "+ str(x)+ " my code produces "+ str(x))
 
 
 
-print("For x = "+ str(x)+ " my code produces "+ str(y))
+#print("For x = "+ str(x)+ " my code produces "+ str(y))
 ```
 
 
@@ -111,11 +154,24 @@ xx <- 1:30
 yy <- rep(NA, times = 30)
 
 # FizzBuzz code goes here
+for (i in 1:length(xx)) {
+  if (xx[i] %% 3 == 0 && xx[i] %% 5 == 0) {
+    yy[i] <- "FizzBuzz"
+  } else if (xx[i] %% 3 == 0) {
+    yy[i] <- "Fizz"
+  } else if (xx[i] %% 5 == 0) {
+    yy[i] <- "Buzz"
+  } else {
+    yy[i] <- xx[i]
+  }
+}
 
-
-# Printing the results in a data frame
 res <- cbind(x = xx, result = yy)
 res
+
+# Printing the results in a data frame
+#res <- cbind(x = xx, result = yy)
+#res
 ```
 
 ```{python vector-fizzbuzz-py, echo = T}
@@ -124,7 +180,18 @@ xx = np.array(range(30)) + 1
 yy = [np.nan]*30
 
 # FizzBuzz code goes here
-
+for i in range(len(xx)):
+    if xx[i]%3 == 0 and xx[i]%5 == 0:
+        yy[i] = "FizzBuzz"
+    elif xx[i]%3 == 0:
+        yy[i] = "Fizz"
+    elif xx[i]%5 == 0:
+        yy[i] = "Buzz"
+    else:
+        yy[i] = xx[i]
+        
+#res = pd.DataFrame({"x": xx, "result": yy})
+#res
 
 # Printing the results in a data frame
 res = pd.DataFrame({"x": xx, "result": yy})
@@ -141,6 +208,19 @@ yy <- rep(NA, 10)
 
 fizzbuzz <- function(x) {
   # Your code goes here
+ # y <- character(length(x))
+  for (i in 1: length(x)) {
+    if (x[i] %% 3 == 0 && x[i] %% 5 == 0) {
+      y[i] <- "FizzBuzz"
+    } else if (x[i] %% 3 == 0) {
+      y[i] <- "Fizz"
+    } else if (x[i] %% 5 == 0) {
+      y[i] <- "Buzz"
+    } else {
+      y[i] <- x[i]
+    }
+  }
+  return(y)
 }
 
 yy <- fizzbuzz(x = xx)
@@ -159,6 +239,15 @@ xx = np.array(choices(range(100), k = 10)) + 1
 def fizzbuzz(x):
   y = [np.nan]*len(x) # this just defines something to return
   # Your code goes here
+  for i in range(len(x)):
+    if x[i]%3 == 0 and x[i]%5 == 0:
+        y[i] = "FizzBuzz"
+    elif x[i]%3 == 0:
+        y[i] = "Fizz"
+    elif x[i]%5 == 0:
+        y[i] = "Buzz"
+    else:
+        y[i] = x[i]
   return y
 
 yy = fizzbuzz(x = xx)
@@ -176,6 +265,7 @@ In R, you can use the function [`stopifnot()` to halt function execution if ther
 
 ```{r stopifnotdemo, error = T}
 stopifnot(2 > 3)
+
 ```
 
 In Python, you can use a [`try:` statement with a `except:` clause](https://docs.python.org/3/tutorial/errors.html#handling-exceptions). This functions like an if-else statement, where if no error occurs, the except statement is never executed.
@@ -186,6 +276,7 @@ try:
 except ValueError: 
   print("Error: could not turn value into an integer")
 
+
 ```
 
 See more examples of this in the [Input Validation](https://srvanderplas.github.io/stat-computing-r-python/part-gen-prog/05-functions.html#input-validation) section of the textbook.
@@ -193,10 +284,25 @@ See more examples of this in the [Input Validation](https://srvanderplas.github.
 
 ```{r function-error-fizzbuzz-r}
 xx <- sample(1:100, 10) # get a random xx
+#xx <- c(1, 2, 3, 3.5)
 yy <- rep(NA, 10)
 
 fizzbuzz <- function(x) {
-  # Your code goes here
+  
+  for (i in 1:length(x)) {
+    stopifnot(is.numeric(x[i]))
+    if (x[i] %% 3 == 0 && x[i] %% 5 == 0) {
+      y[i] <- "FizzBuzz"
+    } else if (x[i] %% 3 == 0) {
+      y[i] <- "Fizz"
+    } else if (x[i] %% 5 == 0) {
+      y[i] <- "Buzz"
+    } else {
+      y[i] <- x[i]
+    }
+  }
+  
+  return(y)
 }
 
 yy <- fizzbuzz(x = xx)
@@ -210,12 +316,25 @@ res
 import pandas as pd
 from random import choices
 xx = np.array(choices(range(100), k = 10)) + 1
-
+#xx = [1, 1, 4, 10, "buzz"]
 
 def fizzbuzz(x):
-  y = [np.nan]*len(x) # this just defines something to return
-  # Your code goes here
+  y = [np.nan] * len(x)
+  for i in range(len(x)):
+    try:
+      int(x[i])
+      if x[i] % 3 == 0 and x[i] % 5 == 0:
+        y[i] = "FizzBuzz"
+      elif x[i] % 3 == 0:
+        y[i] = "Fizz"
+      elif x[i] % 5 == 0:
+        y[i] = "Buzz"
+      else:
+        y[i] = x[i]
+    except ValueError: 
+      y[i] = "Error: could not turn value into an numeric"
   return y
+
 
 yy = fizzbuzz(x = xx)
 
