@@ -208,7 +208,7 @@ yy <- rep(NA, 10)
 
 fizzbuzz <- function(x) {
   # Your code goes here
- # y <- character(length(x))
+  y <- character(length(x))
   for (i in 1: length(x)) {
     if (x[i] %% 3 == 0 && x[i] %% 5 == 0) {
       y[i] <- "FizzBuzz"
